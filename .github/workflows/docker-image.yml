@@ -16,6 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: |
+          rm ~/.docker/config.js -rf
           docker login
-          docker build . --file Dockerfile
+          docker build -t myrealdatanet/serverless-tmate .
           docker push myrealdatanet/serverless-tmate
